@@ -6,29 +6,34 @@ using System.Linq;
 class Solution
 {
 
-    static void Main(String[] args)
-    {
-        int n = Convert.ToInt32(Console.ReadLine());
-        string[] arr_temp = Console.ReadLine().Split(' ');
-        int[] arr = Array.ConvertAll(arr_temp,Int32.Parse);
-        
-        Array.Sort(arr);
+	static void Main(String[] args)
+	{
+		int n = Convert.ToInt32(Console.ReadLine());
+		string[] arr_temp = Console.ReadLine().Split(' ');
+		int[] arr = Array.ConvertAll(arr_temp,Int32.Parse);
+		
+		CutTheSticks(n, arr);
+	}
 
-        Console.WriteLine(n);
+	public static void CutTheSticks(int n, int[] arr)
+	{
+		Array.Sort(arr);
 
-        int cut = arr[0];
-        int idx = 1;
-        while(idx < n)
-        {
-            if (cut == arr[idx])
-            {
-                idx++;
-                continue;
-            }
+		Console.WriteLine(n);
 
-            Console.WriteLine(n - idx);
-            cut = arr[idx];
-            idx++;
-        }
-    }
+		int cut = arr[0];
+		int idx = 1;
+		while(idx < n)
+		{
+			if (cut == arr[idx])
+			{
+				idx++;
+				continue;
+			}
+
+			Console.WriteLine(n - idx);
+			cut = arr[idx];
+			idx++;
+		}
+	}
 }

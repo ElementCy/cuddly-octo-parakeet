@@ -5,31 +5,36 @@ using System.Linq;
 
 class Solution
 {
-    static void Main(String[] args)
-    {
-        int n = Convert.ToInt32(Console.ReadLine());
-        string[] c_temp = Console.ReadLine().Split(' ');
-        int[] c = Array.ConvertAll(c_temp,Int32.Parse);
-        
-        int curPos = 0;
-        int steps = 0;
+	static void Main(String[] args)
+	{
+		int n = Convert.ToInt32(Console.ReadLine());
+		string[] c_temp = Console.ReadLine().Split(' ');
+		int[] c = Array.ConvertAll(c_temp,Int32.Parse);
+		
+		Console.WriteLine(JumpingOnTheClouds(n, c));
+	}
 
-        while(curPos < (n-1))
-        {
-            if (curPos + 2 < n && curPos + 1 < n)
-            {
-                if (c[curPos + 2] == 0)
-                    curPos += 2;
-                else
-                    curPos++;
-            } else
-            {
-                if (curPos + 1 < n)
-                    curPos++;
-            }
-            steps++;
-        }
+	public static int JumpingOnTheClouds(int n, int[] c)
+	{
+		int curPos = 0;
+		int steps = 0;
 
-        Console.WriteLine(steps);
-    }
+		while(curPos < (n-1))
+		{
+			if (curPos + 2 < n && curPos + 1 < n)
+			{
+				if (c[curPos + 2] == 0)
+					curPos += 2;
+				else
+					curPos++;
+			} else
+			{
+				if (curPos + 1 < n)
+					curPos++;
+			}
+			steps++;
+		}
+
+		return steps;
+	}
 }
